@@ -21,29 +21,30 @@ const log = function(message){
 //config cors 
 app.use(cors())
 
+//Use puppeteer to scrape reddit
+const scrape =  async () =>  {
 
-function scrape(){
-(async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     const url = 'https://old.reddit.com/r/asxbets/';
     await page.goto(url);
     
-    //gets the top 25 post titles on r/asxbets and stores in array called postTitles
+    //gets the top 25 post titles on r/asxbets and stores in array called data
     let data = await page.evaluate(() => 
-    Array.from(document.querySelectorAll('p[class="title"]')).map(post => post.textContent.trim())
-    )
+    Array.from(document.querySelectorAll('p[class="title"]')).map(post => post.textContent.trim()))
 
-    console.log(data);
-    
     await browser.close();
-    return data;
-})()
+
+return data;
 }
-//refresh the data every 30 seconds
-setInterval(scrape,5000);
 
 //endpoint for getting the crawled data set
+app.get('/crawler',  async (req,res) => {
+        log('Request made for crawled data')
+        let result = await scrape();
+        console.log(result);
+        res.send(result)
+})
 
 //server
 const port = 8080;
