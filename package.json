@@ -2,7 +2,7 @@
   "name": "hordescore-crawler",
   "version": "1.0.0",
   "description": "Web crawler for Hordescore",
-  "main": "app.js",
+  "main": "crawler.js",
   "scripts": {
     "start": "node crawler.js"
   },
