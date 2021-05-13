@@ -46,7 +46,7 @@ app.get('/crawler',  async (req,res) => {
         res.send(result)
 })
 
-//server
+//server details 
 const port = 8080;
 app.listen(port)
 log('CORS-enabled web server is listening on port: ' + port)
