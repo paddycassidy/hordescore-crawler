@@ -30,18 +30,18 @@ function scrape(){
     await page.goto(url);
     
     //gets the top 25 post titles on r/asxbets and stores in array called postTitles
-    const postTitles = await page.evaluate(() => 
+    let data = await page.evaluate(() => 
     Array.from(document.querySelectorAll('p[class="title"]')).map(post => post.textContent.trim())
     )
 
-    console.log(postTitles);
-
+    console.log(data);
+    
     await browser.close();
-})();
-
+    return data;
+})()
 }
 //refresh the data every 30 seconds
-setInterval(scrape,30000);
+setInterval(scrape,5000);
 
 //endpoint for getting the crawled data set
 
