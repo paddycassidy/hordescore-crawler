@@ -14,9 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "puppeteer": "*",
+    "dotenv": "^9.0.2",
     "express": "^4.17.1",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "puppeteer": "*"
   },
   "bugs": {
     "url": "https://github.com/paddycassidy/hordescore-crawler/issues"

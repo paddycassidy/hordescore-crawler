@@ -4,6 +4,8 @@ const express = require('express');
 const moment = require('moment');
 //cors library
 const cors = require('cors');
+// use environment variables
+require('dotenv').config()
 //library for crawler
 const puppeteer = require('puppeteer');
 
@@ -49,7 +51,7 @@ app.get('/crawler',  async (req,res) => {
         res.send(result)
 })
 
-//server details 
-const port = 8080;
-app.listen(port)
-log('CORS-enabled web server is listening on port: ' + port)
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`CORS-enabled web server is listening on port ${port}`)
+})
