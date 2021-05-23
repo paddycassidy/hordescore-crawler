@@ -22,9 +22,6 @@ const log = function(message){
 
 //config cors 
 app.use(cors())
-app.get('/products/:id', function (req, res, next) {
-    res.json({msg: 'This is CORS-enabled for all origins!'})
-  })
 
 //Use puppeteer to scrape reddit
 const scrape =  async () =>  {
