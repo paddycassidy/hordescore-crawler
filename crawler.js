@@ -26,7 +26,12 @@ app.use(cors())
 //Use puppeteer to scrape reddit
 const scrape =  async () =>  {
 
-    const browser = await puppeteer.launch();
+    //const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        args: [
+          '--disable-web-security',
+        ],
+      });
     const page = await browser.newPage();
     const url = 'https://old.reddit.com/r/asxbets/';
     await page.goto(url);
