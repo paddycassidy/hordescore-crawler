@@ -27,11 +27,8 @@ app.use(cors())
 const scrape =  async () =>  {
 
     //const browser = await puppeteer.launch();
-    const browser = await puppeteer.launch({
-        args: [
-          '--disable-web-security',
-        ],
-      });
+    const browser = await puppeteer.launch({headless: headless, devtools: true, args: ['--disable-web-security', '--disable-features=IsolateOrigins', ' --disable-site-isolation-trials']});
+
     const page = await browser.newPage();
     const url = 'https://old.reddit.com/r/asxbets/';
     await page.goto(url);
