@@ -27,7 +27,7 @@ app.use(cors())
 const scrape =  async () =>  {
 
     //const browser = await puppeteer.launch();
-    const browser = await puppeteer.launch({headless: headless, devtools: true, args: ['--disable-web-security', '--disable-features=IsolateOrigins', ' --disable-site-isolation-trials']});
+    const browser = await puppeteer.launch({headless: true, devtools: true});
 
     const page = await browser.newPage();
     const url = 'https://old.reddit.com/r/asxbets/';
@@ -50,7 +50,7 @@ app.get('/crawler',  async (req,res) => {
         res.send(result)
 })
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
     console.log(`CORS-enabled web server is listening on port ${port}`)
 })
